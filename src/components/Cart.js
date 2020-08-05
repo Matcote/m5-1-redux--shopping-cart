@@ -14,14 +14,7 @@ const Cart = () => {
         <P>0 Item</P>
         <ul>
           {storeItems.map((item) => {
-            return (
-              <CartItem
-                name={item.title}
-                key={item.id}
-                quantity={item.quantity}
-                price={item.price}
-              />
-            );
+            return <CartItem item={item} key={item.id} />;
           })}
         </ul>
       </Top>
