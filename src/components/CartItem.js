@@ -16,6 +16,7 @@ const CartItem = ({ quantity, name }) => {
 };
 const Wrapper = styled.div`
   border: 2px dashed darkgray;
+  margin-top: 15px;
   h2 {
     padding-left: 15px;
     display: inline-block;

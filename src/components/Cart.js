@@ -1,15 +1,28 @@
 import React from "react";
 import styled from "styled-components";
 import CartItem from "./CartItem";
+import { useSelector } from "react-redux";
+import { getStoreItemArray } from "../reducers";
 
 const Cart = () => {
+  const state = useSelector((state) => state);
+  const storeItems = useSelector(getStoreItemArray);
   return (
     <Wrapper>
       <Top>
         <H2>Your Cart</H2>
         <P>0 Item</P>
         <ul>
-          <CartItem name="Hello World" quantity={1} />
+          {storeItems.map((item) => {
+            return (
+              <CartItem
+                name={item.title}
+                key={item.id}
+                quantity={item.quantity}
+                price={item.price}
+              />
+            );
+          })}
         </ul>
       </Top>
       <Bottom></Bottom>
