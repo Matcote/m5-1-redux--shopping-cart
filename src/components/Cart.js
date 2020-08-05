@@ -6,7 +6,6 @@ import { getStoreItemArray } from "../reducers";
 
 const Cart = () => {
   const storeItems = useSelector(getStoreItemArray);
-  console.log(storeItems);
   let totalPrice = 0;
   storeItems.forEach((item) => {
     totalPrice = totalPrice + item.price * item.quantity;
