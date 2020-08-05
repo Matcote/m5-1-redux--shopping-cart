@@ -5,8 +5,12 @@ import { useSelector } from "react-redux";
 import { getStoreItemArray } from "../reducers";
 
 const Cart = () => {
-  const state = useSelector((state) => state);
   const storeItems = useSelector(getStoreItemArray);
+  console.log(storeItems);
+  let totalPrice = 0;
+  storeItems.forEach((item) => {
+    totalPrice = totalPrice + item.price * item.quantity;
+  });
   return (
     <Wrapper>
       <Top>
@@ -18,7 +22,10 @@ const Cart = () => {
           })}
         </ul>
       </Top>
-      <Bottom></Bottom>
+      <Bottom>
+        <span>Total: ${totalPrice / 100}</span>
+        <button>Purchase</button>
+      </Bottom>
     </Wrapper>
   );
 };
@@ -53,6 +60,21 @@ const P = styled.p`
   color: lightgray;
 `;
 
-const Bottom = styled.div``;
+const Bottom = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  span {
+    font-size: xx-large;
+  }
+  button {
+    color: white;
+    background-color: #ff406e;
+    padding: 8px;
+    border-radius: 12px;
+    font-size: x-large;
+  }
+`;
 
 export default Cart;

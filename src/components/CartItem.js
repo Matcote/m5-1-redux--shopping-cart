@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { removeItem } from "../actions";
+import { removeItem, updateQuantity } from "../actions";
 import { useDispatch } from "react-redux";
 
 const CartItem = ({ item }) => {
@@ -12,7 +12,12 @@ const CartItem = ({ item }) => {
         <button onClick={() => dispatch(removeItem(item))}>X</button>
       </Top>
       <p>
-        Quantity: <input type="text" value={item.quantity} />
+        Quantity:{" "}
+        <input
+          type="text"
+          value={item.quantity}
+          onChange={(ev) => dispatch(updateQuantity(item, ev.target.value))}
+        />
       </p>
     </Wrapper>
   );
