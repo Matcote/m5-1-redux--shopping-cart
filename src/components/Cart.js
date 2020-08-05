@@ -7,14 +7,19 @@ import { getStoreItemArray } from "../reducers";
 const Cart = () => {
   const storeItems = useSelector(getStoreItemArray);
   let totalPrice = 0;
+  let totalQuantity = 0;
   storeItems.forEach((item) => {
     totalPrice = totalPrice + item.price * item.quantity;
+    totalQuantity = totalQuantity + item.quantity;
   });
   return (
     <Wrapper>
       <Top>
         <H2>Your Cart</H2>
-        <P>0 Item</P>
+        <P>
+          {totalQuantity + " "}
+          Item{totalQuantity !== 1 && "s"}
+        </P>
         <ul>
           {storeItems.map((item) => {
             return <CartItem item={item} key={item.id} />;
